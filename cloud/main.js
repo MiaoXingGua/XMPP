@@ -49,8 +49,6 @@ AV.Cloud.define('pingXMPP', function(request, response) {
                 
                 
 
-
-
 //连接到xmpp服务器
 var xmppConnect = new Strophe.Connection(XMPP_SEVER);
 
@@ -62,7 +60,7 @@ xmppConnect.connect(data.jid, data.password, function (status) {
                     }
                     });
 
-conn.connect(data.jid, data.password, function (status) {
+xmppConnect.connect(data.jid, data.password, function (status) {
              if (status === Strophe.Status.CONNECTED) {
              $(document).trigger('connected');
              } else if (status === Strophe.Status.DISCONNECTED) {
@@ -109,15 +107,19 @@ handle_pong: function (iq) {
                 
                 });
 
+
+    
+});
+
 function signUpToXMPP(userId,password){
     
     AV.Cloud.httpRequest({
                          method:'POST'
-
+                         
                          url: "http://" + XMPP_SEVER + "/",
-
+                         
                          headers:{
-                            
+                         
                          
                          },
                          
@@ -125,12 +127,9 @@ function signUpToXMPP(userId,password){
                          
                          }
                          success: function(httpResponse) {
-
+                         
                          },
                          error: function(httpResponse) {
                          
-                         }
-    });
-    
-});
-
+                         });
+                         });
