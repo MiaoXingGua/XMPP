@@ -28,11 +28,10 @@ AV.Cloud.define('register', function(request, response) {
         user.set("password", password);
         user.set("email", email);
         
-        strophe.
                 
         user.signUp(null, {
-                success: function(user) {
                     
+                success: function(user) {
                     
                     
                 },
